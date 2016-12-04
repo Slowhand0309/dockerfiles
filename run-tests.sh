@@ -8,7 +8,8 @@ for entity in `find . -type d -mindepth 1 -maxdepth 1 -not -name ".git"`; do
   if [ -e $entity/spec ]; then
     # Build docker image.
     cd $entity
-    docker-compose build
+    ./docker-build.sh
+
     cd spec
     # Install gems via bundler.
     bundle install --path vendor/bundle
