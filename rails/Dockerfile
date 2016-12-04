@@ -10,7 +10,6 @@ RUN apt-get install -y sqlite3
 RUN apt-get install -y nodejs
 
 COPY Gemfile $HOME_DIR/
-COPY Gemfile.lock $HOME_DIR/
 
 RUN bundle install
 ADD . $HOME_DIR

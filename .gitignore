@@ -1,2 +1,9 @@
 # Mac OS
 .DS_Store
+
+# Spec
+*/spec/.bundle
+*/spec/vendor/
+
+# Ruby
+Gemfile.lock
