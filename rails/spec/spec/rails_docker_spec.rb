@@ -1,6 +1,13 @@
 # encoding: utf-8
 require 'spec_helper'
 
+if ENV['CIRCLECI']
+  class Docker::Container
+    def remove(options={}); end
+    alias_method :delete, :remove
+  end
+end
+
 # Spec for rails.
 describe 'rails_install' do
 
