@@ -27,3 +27,20 @@ describe 'dependency' do
     it { should be_installed }
   end
 end
+
+# Add specific gem check.
+describe 'specific_gems' do
+  
+  describe package('pry-rails') do
+    it { should be_installed.by('gem') }
+  end
+  describe package('pry-doc') do
+    it { should be_installed.by('gem') }
+  end
+  describe package('pry-byebug') do
+    it { should be_installed.by('gem') }
+  end
+  describe package('pry-stack_explorer') do
+    it { should be_installed.by('gem') }
+  end
+end
