@@ -14,7 +14,7 @@ RUN sudo apt-get -y install lib32stdc++6 lib32z1
 
 # Download android sdk.
 RUN wget http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
-RUN tar zxvf android-sdk_r24.4.1-linux.tgz
+RUN tar zxvfo android-sdk_r24.4.1-linux.tgz
 RUN rm -rf android-sdk_r24.4.1-linux.tgz
 
 # Environment variables
