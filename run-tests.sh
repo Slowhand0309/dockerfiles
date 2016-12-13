@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WORKDIR=$PED
+WORKDIR=$PWD
 
 # Find target directory.
 for entity in `find . -type d -mindepth 1 -maxdepth 1 -not -name ".git"`; do

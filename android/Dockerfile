@@ -20,3 +20,6 @@ RUN rm -rf android-sdk_r24.4.1-linux.tgz
 # Environment variables
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV PATH $ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+
+RUN echo y | android update sdk --no-ui --all --filter "android-23,build-tools-25.0.0"
+RUN echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
