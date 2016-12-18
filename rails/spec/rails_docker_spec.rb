@@ -1,6 +1,8 @@
 # encoding: utf-8
 require 'spec_helper'
 
+set :docker_image, 'slowhand/rails:1.0'
+
 if ENV['CIRCLECI']
   class Docker::Container
     def remove(options={}); end
@@ -30,7 +32,7 @@ end
 
 # Add specific gem check.
 describe 'specific_gems' do
-  
+
   describe package('pry-rails') do
     it { should be_installed.by('gem') }
   end

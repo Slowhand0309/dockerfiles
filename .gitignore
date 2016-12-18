@@ -2,8 +2,12 @@
 .DS_Store
 
 # Spec
-*/spec/.bundle
-*/spec/vendor/
+.bundle/
+vendor/
 
 # Ruby
 Gemfile.lock
+*/.rspec
+*/spec/spec_helper.rb
+!specfiles/.rspec
+!specfiles/spec/spec_helper.rb

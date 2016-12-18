@@ -1,6 +1,8 @@
 # encoding: utf-8
 require 'spec_helper'
 
+set :docker_image, 'slowhand/android:1.0'
+
 if ENV['CIRCLECI']
   class Docker::Container
     def remove(options={}); end
