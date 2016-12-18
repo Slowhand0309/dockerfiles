@@ -8,8 +8,8 @@ bundle install
 # Find target directory.
 for entity in `find . -type d -mindepth 1 -maxdepth 1 -not -name ".git"`; do
 
-  if [ "$entity" = specfiles ]; then
-    echo "continue"
+  if [ $entity = "./specfiles" ]; then
+    # Ignore directory
     continue
   fi
 
