@@ -24,8 +24,8 @@ describe file('/usr/local/include/gtest/gtest.h') do
   it { should be_file }
 end
 
-%w(libgtest.a libgtest_main.a).each do |lib|
-  describe file(lib) do
+%w(libgtest.a libgtest_main.a).each do |libfile|
+  describe file("/usr/local/lib/#{libfile}") do
     it { should be_file }
   end
 end
