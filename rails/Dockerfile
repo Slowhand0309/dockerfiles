@@ -6,13 +6,12 @@ ENV HOME_DIR /usr/src/app
 WORKDIR $HOME_DIR
 
 RUN apt-get update -qq
-RUN apt-get install -y sqlite3
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs mysql-client postgresql-client sqlite3 --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
-COPY Gemfile $HOME_DIR/
+COPY Gemfile /tmp
 
-RUN bundle install
-ADD . $HOME_DIR
+RUN cd /tmp && bundle install
 
 # Publish port 3000
 EXPOSE 3000
