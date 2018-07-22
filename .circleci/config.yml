@@ -22,8 +22,8 @@ jobs:
           command: bundle install
 
       - run:
-          name: which rspec
-          command: which rspec
+          name: android docker build
+          command: cd android && docker build -t slowhand/android:1.0 .
 
       # Upload document
       - run:
