@@ -17,22 +17,14 @@ jobs:
           name: docker version
           command: docker --version
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
       # Install dependencies
       - run:
           name: bundle install
-          command: bundle install --path=vendor/bundle
+          command: bundle install
 
-      - save_cache:
-          paths:
-            - vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: which rspec
+          command: which rspec
 
       # Upload document
       - run:
