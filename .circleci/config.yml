@@ -11,19 +11,22 @@ jobs:
       - checkout
       - setup_remote_docker
 
-      # Install dependencies
-      - run:
-          name: docker version
-          command: docker --version
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
 
       # Install dependencies
       - run:
           name: bundle install
-          command: bundle install
+          command: bundle install --path vendor/bundle
 
-      - run:
-          name: android docker build
-          command: cd android && docker build -t slowhand/android:1.0 .
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
       # Upload document
       - run:

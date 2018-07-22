@@ -18,10 +18,10 @@ for entity in `find . -type d -mindepth 1 -maxdepth 1 -not -name ".git"`; do
 
     # Build docker image.
     cd $entity
-    sudo ./docker-build.sh
+    ./docker-build.sh
     cd $WORKDIR
 
     # Exec rspec
-    sudo rspec --default-path $entity/spec
+    bundle exec rspec --default-path $entity/spec
   fi
 done
