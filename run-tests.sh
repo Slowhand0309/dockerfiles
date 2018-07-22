@@ -2,9 +2,6 @@
 
 WORKDIR=$PWD
 
-# Prepare gem install.
-bundle install
-
 # Find target directory.
 for entity in `find . -type d -mindepth 1 -maxdepth 1 -not -name ".git"`; do
 
@@ -21,10 +18,10 @@ for entity in `find . -type d -mindepth 1 -maxdepth 1 -not -name ".git"`; do
 
     # Build docker image.
     cd $entity
-    ./docker-build.sh
+    sudo ./docker-build.sh
+    cd $WORKDIR
 
     # Exec rspec
-    rspec
-    cd $WORKDIR
+    sudo bundle exec rspec --default-path $entity/spec
   fi
 done

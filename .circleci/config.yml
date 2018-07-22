@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/workspace
+    branches:
+      only:
+        - develop
+    docker:
+      - image: circleci/ruby:2.4
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+
+      # Install dependencies
+      - run:
+          name: docker version
+          command: docker --version
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      # Install dependencies
+      - run:
+          name: bundle install
+          command: bundle install --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Upload document
+      - run:
+          name: run test
+          command: ./run-tests.sh
+
+      # Deploy
+      - run:
+          name: deploy docker images
+          command: ./deploy.sh
