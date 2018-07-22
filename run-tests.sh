@@ -22,6 +22,6 @@ for entity in `find . -type d -mindepth 1 -maxdepth 1 -not -name ".git"`; do
     cd $WORKDIR
 
     # Exec rspec
-    sudo bundle exec rspec --default-path $entity/spec
+    sudo rspec --default-path $entity/spec
   fi
 done
