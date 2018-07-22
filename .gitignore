@@ -6,7 +6,6 @@
 vendor/
 
 # Ruby
-Gemfile.lock
 */.rspec
 */spec/spec_helper.rb
 !specfiles/.rspec
